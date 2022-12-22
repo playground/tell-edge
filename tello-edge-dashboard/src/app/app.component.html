@@ -1,0 +1,63 @@
+<div class="p-5 w-full">
+  <div class="flex flex-row">
+    <div class="flex flex-col grow">
+        <div #cameraoff class="bg-black text-white text-center h-80 block z-2"><p>Tello Camera Off</p></div>
+        <canvas class="tellocamera"></canvas>
+    </div>
+  
+    <div class="flex flex-col px-2 my-1">
+      <div class="flex flex-row my-1">
+        <div class="text-white text-xs">
+          <div class="">Status: 
+                <p #statusDisconnected class="text-red-600 px-1 float-right hidden">Disconnected</p>
+                <p #statusConnected class="block text-green-600 px-1 float-right">Connected</p>
+          </div>
+        </div>
+        <div class="px-3 text-white text-xs">
+          <div class="labelHeight">Height: 
+            <p #heightLevel class="float-right px-1 leading-4">0</p>
+          </div>                       
+        </div>
+      </div>
+      <div class="flex flex-row my-1">  
+        <div class="w-full h-8 bg-gray-600 rounded-r rounded-l">
+          <p #battery class="text-center leading-loose">Battery 0%</p>
+          <div #batteryLevel class="bg-green-600 w-0 rounded-r m-1"></div>
+        </div>
+      </div>
+      <div class="flex flex-row my-1">
+        <div class="flex flex-col w-full grow">
+          <div class="flex flex-row text-xs text-white h-12">
+            <button #btnTakeOff type="button" class="bg-gray-600 hover:bg-gray-500 rounded w-1/2 mr-1" disabled (click)="trigger('command','takeoff')">Take Off</button>
+            <button #btnLand type="button" class="bg-gray-600 hover:bg-gray-500 rounded w-1/2" disabled (click)="trigger('command','land')">Land</button>
+          </div>  
+          <div class="flex flex-row text-xs text-white h-12 my-1">
+            <button #btnUp type="button" class="bg-gray-600 hover:bg-gray-500 rounded w-1/2 mr-1" disabled (click)="trigger('command','up', 20)">Up 20</button>
+            <button #btnDown type="button" class="bg-gray-600 hover:bg-gray-500 rounded w-1/2" disabled (click)="trigger('command','down', 20)">Down 20</button>
+          </div>
+          <div class="flex flex-row text-xs text-white h-12 my-1">
+            <button #btnLeft type="button" class="bg-gray-600 hover:bg-gray-500 rounded w-1/2 mr-1" disabled (click)="trigger('command','left', 20)">Left 20</button>
+            <button #btnRight type="button" class="bg-gray-600 hover:bg-gray-500 rounded w-1/2" disabled (click)="trigger('command','right', 20)">Right 20</button>
+          </div>
+          <div class="flex flex-row text-xs text-white h-12 my-1">
+            <button #btnForward type="button" class="bg-gray-600 hover:bg-gray-500 rounded w-1/2 mr-1" disabled (click)="trigger('command','forward', 20)">Forward 20</button>
+            <button #btnBack type="button" class="bg-gray-600 hover:bg-gray-500 rounded w-1/2" disabled (click)="trigger('command','back', 20)">Back 20</button>
+          </div>
+          <div class="flex flex-row text-xs text-white h-12">
+            <button #btnStreamOn type="button" class="bg-gray-600 hover:bg-gray-500 rounded w-1/2 mr-1" disabled (click)="streamOn()">Stream On</button>
+            <button #btnStreamOff type="button" class="bg-gray-600 hover:bg-gray-500 rounded w-1/2" disabled (click)="streamOff()">Stream Off</button>
+          </div>
+          <div class="flex flex-row text-xs text-white h-12 my-1">
+            <button #btnRotateLeft type="button" class="bg-gray-600 hover:bg-gray-500 rounded w-1/2 mr-1" disabled (click)="trigger('command', 'ccw', 20)">Rotate Left</button>
+            <button #btnRotateRight type="button" class="bg-gray-600 hover:bg-gray-500 rounded w-1/2" disabled (click)="trigger('command', 'cw', 20)">Rotate Right</button>
+          </div>
+          <div class="flex flex-row text-xs text-white h-12 my-1">
+            <button #btnRoute1 type="button" class="bg-gray-600 hover:bg-gray-500 rounded w-1/2 mr-1" disabled (click)="trigger('route1')">Route 1</button>
+            <button #btnRotateRight type="button" class="bg-gray-600 hover:bg-gray-500 rounded w-1/2" disabled (click)="trigger('route1')">Route 2</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
