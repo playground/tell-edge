@@ -1,0 +1,9 @@
+.battery > p {
+  text-align: center;
+  color: white;
+  font-size: 12px;
+  line-height: 2.4;
+  text-transform: uppercase;
+  position: absolute;
+  width: 83%;
+}

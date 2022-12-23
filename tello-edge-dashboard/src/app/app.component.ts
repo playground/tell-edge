@@ -103,8 +103,14 @@ export class AppComponent implements OnInit, OnDestroy {
     this.statusDisconnected.nativeElement.setAttribute('style', payload.status ? 'display: none' : 'display: block');
     this.statusConnected.nativeElement.setAttribute('style', !payload.status ? 'display: none' : 'display: block');
 
-    this.battery.nativeElement.innerText =`Battery ${payload.battery}%`;
-    this.batteryLevel.nativeElement.setAttribute('style', `width: ${payload.battery}%`)
+    this.battery.nativeElement.innerHTML =`Battery ${payload.battery}%`;
+    let el = this.batteryLevel.nativeElement;
+    if(el && payload.battery) {
+      el.setAttribute('style', `width: ${payload.battery.trim()}%; background: green; height: inherit; tranistion: width 1s; border-radius: 5px;`);
+      //el.setAttribute('background', 'green');
+      //el.setAttribute('height', 'inherit');
+      //el.setAttribute('transition', 'width 1s')  
+    }
 
     this.heightLevel.nativeElement.innerText = payload.height || 0;
 
@@ -148,6 +154,10 @@ export class AppComponent implements OnInit, OnDestroy {
     this.btnStreamOn.nativeElement.disabled = enable;
     this.btnStreamOff.nativeElement.disabled = enable;
     this.btnRoute1.nativeElement.disabled = enable;
+    if(this.telloCamera) {
+      this.telloCamera.setAttribute('style', 'display: none')  
+    }
+    this.cameraoff.nativeElement.setAttribute('style', 'display:block');
   };
 
   ngOnDestroy() {

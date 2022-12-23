@@ -20,25 +20,14 @@ const io = socketio(server, {
     ]
   }
 });
-//const http = require('http').Server(app);
-//const io = require('socket.io')(http, {
-//  cors: {
-//    origins: [
-//      'http://localhost:4200',
-//      'http://localhost:3001',
-//      'http://localhost:8080'
-//    ]
-//  }
-//});
 
 const telloSocket = dgram.createSocket('udp4');
+let ffmpeg; 
 
 export class Server {
   socketBound = false;
-  app = express();
   telloHost = '192.168.10.1';
   telloPortCamera = 11111;
-  localPort = 3001;
   localHost = 'localhost';
   wsPort = 3002;
   telloPort = 8889;
@@ -51,7 +40,7 @@ export class Server {
 
   setupFFMPeg() {
     // FFMEG - use udp for stream video
-    const ffmpeg = spawn('ffmpeg', [
+    ffmpeg = spawn('ffmpeg', [
       '-hide_banner',
       '-i',
       `udp://${this.telloHost}:${this.telloPortCamera}`,
@@ -67,7 +56,7 @@ export class Server {
       '0',
       '-r',
       '20',
-      `http://${this.localHost}:${this.localPort}/streaming`
+      `http://${this.localHost}:${this.port}/streaming`
     ]);
   }
   initialise() {    
@@ -199,14 +188,13 @@ export class Server {
         }
       });
     });
-    let app = this.app;
-    app.use(cors({
-      origin: '*'
-    }));
+    //app.use(cors({
+    //  origin: '*'
+    //}));
 
-    app.use('/static', express.static('public'));
+    app.use(express.static(__dirname+'/public', {dotfiles: 'allow'}));
 
-    app.use('/', express.static('dist/tello-edge'))
+    app.use(express.static('dist/tello-edge-dashboard'))
   
     app.get('/', (req: express.Request, res: express.Response, next: any) => { //here just add next parameter
       res.sendFile(
@@ -224,7 +212,16 @@ export class Server {
       });
     });
 
-    server.listen(this.port, this.localHost);
+    app.get("*",  (req: express.Request, res: express.Response) => {
+      console.dir(__dirname)
+      res.sendFile(
+          path.resolve( __dirname, "public/index.html" )
+      )
+    });
+
+    server.listen(this.port, this.localHost, () => {
+      console.log('listing on port: ', this.port, this.localHost)
+    });
 
     // WebSocket Server for stream Tello Camera
     const webSocket:any = new ws.Server({ port: this.wsPort, host: this.localHost });

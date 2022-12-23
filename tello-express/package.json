@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/index.js",
-    "build": "npm run tsc",
+    "build": "tsc",
     "build:live": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "watch:run": "nodemon -e ts,js --watch 'src/**/*.ts' --watch 'dist/tello-edge-dashboard/**/*.js' --exec 'npm run build && node dist/index.js'",
-    "tsc": "tsc",
     "bundle": "webpack --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
