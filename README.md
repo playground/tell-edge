@@ -20,5 +20,6 @@ Drone for Edge Computing
 
 ![Alt text](image3.png?raw=true "Takeof with video stream")
 
-<video src="tello-edge.mp4" controls="controls" style="max-width: 730px;">
-</video>
+
+https://user-images.githubusercontent.com/243495/210288902-8066acc1-5dca-4882-ae48-cd92905a2993.mp4
+
