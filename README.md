@@ -18,4 +18,4 @@ Drone for Edge Computing
 
 ![Alt text](image2.png?raw=true "Connected")
 
-[![Watch the video](image3.png?)](tello-edge.mp4)
+[![Watch the video](image3.png?)](https://github.com/playground/tello-edge/tello-edge.mp4)
