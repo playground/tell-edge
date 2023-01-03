@@ -18,4 +18,7 @@ Drone for Edge Computing
 
 ![Alt text](image2.png?raw=true "Connected")
 
-[![Watch the video](image3.png?)](tello-edge.mp4)
+![Alt text](image3.png?raw=true "Takeof with video stream")
+
+<video src="tello-edge.mp4" controls="controls" style="max-width: 730px;">
+</video>
