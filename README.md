@@ -2,15 +2,17 @@
 
 Drone for Edge Computing
 
-CD into tello-edge-dashboard
-npm install
-npm run deploy
+1. CD into tello-edge-dashboard
 
-CD into tello-express
-npm install
-npm run watch:run
-Join Tello WiFi
-Goto localhost:8080 in the browser
+- npm install
+- npm run deploy
+
+2. CD into tello-express
+
+- npm install
+- npm run watch:run
+- Join Tello WiFi
+- Goto localhost:8080 in the browser
 
 ![Alt text](image1.png?raw=true "No connection")
 
