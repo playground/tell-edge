@@ -18,4 +18,4 @@ Drone for Edge Computing
 
 ![Alt text](image2.png?raw=true "Connected")
 
-![Alt text](image3.png?raw=true "Take off with streaming video")
+[![Watch the video](image3.png?)](tello-edge.mp4)
