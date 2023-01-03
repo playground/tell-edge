@@ -9,3 +9,5 @@ npm run deploy
 CD into tello-express
 npm install
 npm run watch:run
+Join Tello WiFi
+Goto localhost:8080 in the browser
